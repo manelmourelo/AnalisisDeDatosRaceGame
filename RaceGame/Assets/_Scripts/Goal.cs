@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour {
 
-    
+    //public GameObject Events_Handler;
     bool _finished;
     float _time;
+    public EventsHandler eventhandler;
+    int lap_count = 0;
+
     // Use this for initialization
     void Start () {
-		
+
+        
 	}
 	
 	// Update is called once per frame
@@ -21,12 +25,24 @@ public class Goal : MonoBehaviour {
     {
         if ((col.tag == "Player" || col.transform.root.tag == "Player" ) && !_finished)
         {
+
+            lap_count++;
             _finished = true;            
             StartCoroutine(ResetTag());
             Debug.Log(_time);
+
+            if (eventhandler)
+            {
+                eventhandler.WriteGoal(_time, lap_count);
+            }
+
+
             _time = 0;
+
+           
         }
     }
+    
 
     private IEnumerator ResetTag()
     {
