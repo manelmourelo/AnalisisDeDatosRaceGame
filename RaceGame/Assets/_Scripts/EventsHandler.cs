@@ -81,8 +81,7 @@ public class EventsHandler : MonoBehaviour
      
 
         
-
-        StreamWriter outStream = System.IO.File.CreateText(path);
+        StreamWriter outStream = System.IO.File.AppendText(path);
         outStream.WriteLine(sb);
         outStream.Close();
 
