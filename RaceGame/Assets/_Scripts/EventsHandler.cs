@@ -25,13 +25,15 @@ public class EventsHandler : MonoBehaviour
         //outStream.WriteLine(sb);
         //outStream.Close();
 
-        
 
-        string[] row_data_temp = new string[3];
-        row_data_temp[0] = "type";
-        row_data_temp[1] = "time";
-        row_data_temp[2] = "session_id";
-        level_events_data.Add(row_data_temp);
+        if (System.IO.File.Exists("Assets/CSV/level_events.csv") == false)
+        {
+            string[] row_data_temp = new string[3];
+            row_data_temp[0] = "type";
+            row_data_temp[1] = "time";
+            row_data_temp[2] = "session_id";
+            level_events_data.Add(row_data_temp);
+        }
 
     }
 
@@ -71,10 +73,12 @@ public class EventsHandler : MonoBehaviour
                 int length = level_events_data.Count;
                 string delimiter = ";";
 
-                
 
                 for (int index = 0; index < length; index++)
-                    sb.AppendLine(string.Join(delimiter, level_events_data[index]));
+                {
+                    sb.AppendLine(string.Join(delimiter, level_events_data[index]));   
+                }
+                    
 
                 break;
         }
