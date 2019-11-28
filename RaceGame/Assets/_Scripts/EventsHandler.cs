@@ -257,7 +257,7 @@ public class EventsHandler : MonoBehaviour
 
         string[] row_data_temp = new string[6];
         row_data_temp[0] = "0";
-        row_data_temp[1] = username;
+        row_data_temp[1] = pos.ToString();
         row_data_temp[2] = goal.GetComponent<Goal>().lap_count.ToString();
         row_data_temp[3] = PlayerPrefs.GetString("crash_time");
         row_data_temp[4] = "0";
