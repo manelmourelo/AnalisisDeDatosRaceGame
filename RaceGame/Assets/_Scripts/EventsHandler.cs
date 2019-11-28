@@ -16,7 +16,11 @@ public class EventsHandler : MonoBehaviour
     private List<string[]> sessions_data = new List<string[]>();
     private List<string[]> crashes_data = new List<string[]>();
 
-    public string username = "manelmm3";
+    private int last_lap_id = 0;
+    private int last_session_id = 0;
+    private int last_crash_id = 0;
+
+    public string username = "ricardogl";
 
     enum TypeEvent
     {
@@ -29,21 +33,7 @@ public class EventsHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StringBuilder sb = new StringBuilder();
-
-        //StreamWriter outStream = System.IO.File.CreateText("Assets/CSV/test.csv");
-
-        //outStream.WriteLine(sb);
-        //outStream.Close();
-
-
-
-
-
-        //string[] row_data_temp = new string[3];
-
-
-        //string[] file = System.IO.File.ReadAllLines("Assets/CSV/level_events.csv"); 
+        
 
         PlayerPrefs.SetString("start_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
@@ -63,10 +53,13 @@ public class EventsHandler : MonoBehaviour
         {
             Debug.Log("File exist");
 
+            //**If file exists then we look for the highest session_id to follow from there.**
+
             //Read the file and put data into stringList
             List<string> stringList = new List<string>();
             List<string[]> parsedList = new List<string[]>();
-
+            List<int> lap_ids = new List<int>();
+          
             StreamReader str_reader = new StreamReader("Assets/CSV/laps.csv");
             while (!str_reader.EndOfStream)
             {
@@ -76,18 +69,29 @@ public class EventsHandler : MonoBehaviour
             }
             str_reader.Close();
 
-            for (int i = 0; i < stringList.Count; i++)
+            for (int i = 1; i < stringList.Count; i++)
             {
                 string[] temp = stringList[i].Split(';');
+             
                 for (int j = 0; j < temp.Length; j++)
                 {
                     temp[j] = temp[j].Trim();
+                 
+                    if (j == 0)
+                        lap_ids.Add(int.Parse(temp[j]));
+
+                 
                 }
 
                 parsedList.Add(temp);
-                Debug.Log("parsedList " + i.ToString() + " *** ");
-                Debug.Log(parsedList[i]);
+
             }
+
+            //Get highest lap id
+            lap_ids.Sort();
+            last_lap_id = lap_ids[lap_ids.Count - 1];
+            
+
         }
 
         if (System.IO.File.Exists("Assets/CSV/sessions.csv") == false)
@@ -101,6 +105,50 @@ public class EventsHandler : MonoBehaviour
             sessions_data.Add(row_data_temp);
             Save(TypeEvent.END_SESSION);
         }
+        else
+        {
+            Debug.Log("File exist");
+
+            //**If file exists then we look for the highest session_id to follow from there.**
+
+            //Read the file and put data into stringList
+            List<string> stringList = new List<string>();
+            List<string[]> parsedList = new List<string[]>();
+            List<int> session_ids = new List<int>();
+
+            StreamReader str_reader = new StreamReader("Assets/CSV/sessions.csv");
+            while (!str_reader.EndOfStream)
+            {
+                string line = str_reader.ReadLine();
+                stringList.Add(line);
+
+            }
+            str_reader.Close();
+
+            for (int i = 1; i < stringList.Count; i++)
+            {
+                string[] temp = stringList[i].Split(';');
+           
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    temp[j] = temp[j].Trim();
+
+                    if(j == 0)
+                        session_ids.Add(int.Parse(temp[j]));
+                  
+
+                }
+
+                parsedList.Add(temp);
+
+            }
+
+           
+            //Get highest session id 
+            session_ids.Sort();
+            last_session_id = session_ids[session_ids.Count - 1];
+        }
+        
 
         if (System.IO.File.Exists("Assets/CSV/crashes.csv") == false)
         {
@@ -115,8 +163,51 @@ public class EventsHandler : MonoBehaviour
             crashes_data.Add(row_data_temp);
             Save(TypeEvent.CRASH);
         }
+        else
+        {
+            Debug.Log("File exist");
 
-       // level_events_data.ToString().Replace("\n\n", "\n");
+            //**If file exists then we look for the highest crash_id to follow from there.**
+
+            //Read the file and put data into stringList
+            List<string> stringList = new List<string>();
+            List<string[]> parsedList = new List<string[]>();
+            List<int> crash_ids = new List<int>();
+
+            StreamReader str_reader = new StreamReader("Assets/CSV/crashes.csv");
+            while (!str_reader.EndOfStream)
+            {
+                string line = str_reader.ReadLine();
+                stringList.Add(line);
+
+            }
+            str_reader.Close();
+
+            for (int i = 1; i < stringList.Count; i++)
+            {
+                string[] temp = stringList[i].Split(';');
+
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    temp[j] = temp[j].Trim();
+
+                    if (j == 0)
+                        crash_ids.Add(int.Parse(temp[j]));
+
+
+                }
+
+                parsedList.Add(temp);
+
+            }
+
+
+            //Get highest session id 
+            crash_ids.Sort();
+            last_crash_id = crash_ids[crash_ids.Count - 1];
+        }
+
+        // level_events_data.ToString().Replace("\n\n", "\n");
 
 
     }
