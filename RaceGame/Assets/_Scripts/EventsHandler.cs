@@ -229,12 +229,13 @@ public class EventsHandler : MonoBehaviour
         PlayerPrefs.SetString("time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
         string[] row_data_temp = new string[4];
-        row_data_temp[0] = lap.ToString();
-        row_data_temp[1] = "0";
+        row_data_temp[0] = (last_lap_id+1).ToString();
+        row_data_temp[1] = (last_session_id+1).ToString();
         row_data_temp[2] = username;
         row_data_temp[3] = PlayerPrefs.GetString("time");
         laps_data.Add(row_data_temp);
         Save(TypeEvent.LAP_DONE);
+        last_lap_id++;
 
     }
 
@@ -243,7 +244,7 @@ public class EventsHandler : MonoBehaviour
         PlayerPrefs.SetString("end_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
         string[] row_data_temp = new string[4];
-        row_data_temp[0] = "0";
+        row_data_temp[0] = (last_session_id + 1).ToString();
         row_data_temp[1] = username;
         row_data_temp[2] = PlayerPrefs.GetString("start_time");
         row_data_temp[3] = PlayerPrefs.GetString("end_time");
@@ -256,14 +257,15 @@ public class EventsHandler : MonoBehaviour
         PlayerPrefs.SetString("crash_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
         string[] row_data_temp = new string[6];
-        row_data_temp[0] = "0";
+        row_data_temp[0] = (last_crash_id + 1).ToString();
         row_data_temp[1] = pos.ToString();
         row_data_temp[2] = goal.GetComponent<Goal>().lap_count.ToString();
         row_data_temp[3] = PlayerPrefs.GetString("crash_time");
-        row_data_temp[4] = "0";
+        row_data_temp[4] = (last_session_id + 1).ToString();
         row_data_temp[5] = collision_obj_id.ToString();
         crashes_data.Add(row_data_temp);
         Save(TypeEvent.CRASH);
+        last_crash_id++;
     }
 
     void Save(TypeEvent type)
