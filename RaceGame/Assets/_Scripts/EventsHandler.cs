@@ -11,6 +11,7 @@ public class EventsHandler : MonoBehaviour
 
     private List<string[]> laps_data = new List<string[]>();
     private List<string[]> sessions_data = new List<string[]>();
+    private List<string[]> crashes_data = new List<string[]>();
 
     public string username = "manelmm3";
 
@@ -18,7 +19,8 @@ public class EventsHandler : MonoBehaviour
     {
         EVENT_NONE,
         LAP_DONE,
-        END_SESSION
+        END_SESSION,
+        CRASH
     }
 
     // Start is called before the first frame update
@@ -54,6 +56,37 @@ public class EventsHandler : MonoBehaviour
             Save(TypeEvent.LAP_DONE);
         }
 
+        else
+        {
+            Debug.Log("File exist");
+
+            //Read the file and put data into stringList
+            List<string> stringList = new List<string>();
+            List<string[]> parsedList = new List<string[]>();
+
+            StreamReader str_reader = new StreamReader("Assets/CSV/laps.csv");
+            while (!str_reader.EndOfStream)
+            {
+                string line = str_reader.ReadLine();
+                stringList.Add(line);
+
+            }
+            str_reader.Close();
+
+            for (int i = 0; i < stringList.Count; i++)
+            {
+                string[] temp = stringList[i].Split(';');
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    temp[j] = temp[j].Trim();
+                }
+
+                parsedList.Add(temp);
+                Debug.Log("parsedList " + i.ToString() + " *** ");
+                Debug.Log(parsedList[i]);
+            }
+        }
+
         if (System.IO.File.Exists("Assets/CSV/sessions.csv") == false)
         {
             string[] row_data_temp = new string[4];
@@ -66,10 +99,20 @@ public class EventsHandler : MonoBehaviour
             Save(TypeEvent.END_SESSION);
         }
 
-        else
+        if (System.IO.File.Exists("Assets/CSV/crashes.csv") == false)
         {
-            Debug.Log("File doesn't exist");
+            string[] row_data_temp = new string[6];
+
+            row_data_temp[0] = "crash_id";
+            row_data_temp[1] = "position";
+            row_data_temp[2] = "current_lap";
+            row_data_temp[3] = "time";
+            row_data_temp[4] = "session_id";
+            row_data_temp[5] = "collision_obj_id";
+            sessions_data.Add(row_data_temp);
+            Save(TypeEvent.END_SESSION);
         }
+
        // level_events_data.ToString().Replace("\n\n", "\n");
 
 
@@ -158,5 +201,6 @@ public class EventsHandler : MonoBehaviour
         outStream.Close();
         laps_data.Clear();
         sessions_data.Clear();
+        crashes_data.Clear();
     }
 }
