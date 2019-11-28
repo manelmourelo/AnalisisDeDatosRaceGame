@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour {
     bool _finished;
     float _time;
     public EventsHandler eventhandler;
-    int lap_count = 0;
+    public int lap_count = 0;
 
     // Use this for initialization
     void Start () {

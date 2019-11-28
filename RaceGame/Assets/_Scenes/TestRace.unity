@@ -234,6 +234,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1001 &122503074
@@ -243,6 +253,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (11)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -95.031586
@@ -275,10 +289,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (11)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &228861776 stripped
@@ -386,6 +406,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 77.68674
@@ -418,9 +442,15 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (1)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
@@ -431,6 +461,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -174.59859
@@ -463,10 +497,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (7)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &475660112 stripped
@@ -514,7 +554,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -724,6 +763,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.499847
@@ -756,10 +799,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (5)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &812322297 stripped
@@ -781,6 +830,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 117.31793
@@ -813,10 +866,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (2)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1001 &959977963
@@ -826,6 +885,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 52.184753
@@ -858,10 +921,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (4)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &973403120 stripped
@@ -909,6 +978,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1 &1054607143
@@ -964,6 +1038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (14)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.38907
@@ -996,10 +1074,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (14)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1001 &1435803786
@@ -1009,6 +1093,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 107.44235
@@ -1041,9 +1129,15 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (3)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
@@ -1088,6 +1182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdf17d040e6beb4b80b92162178e4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goal: {fileID: 1879448661}
+  username: manelmm3
 --- !u!4 &1576500412
 Transform:
   m_ObjectHideFlags: 0
@@ -1109,6 +1205,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.82599
@@ -1141,10 +1241,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (6)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &1690255032 stripped
@@ -1160,6 +1266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -148.23453
@@ -1192,10 +1302,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (8)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &1812423296 stripped
@@ -1244,7 +1360,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1317,6 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventhandler: {fileID: 1576500411}
+  lap_count: 0
 --- !u!4 &1901105225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548,
@@ -1330,6 +1446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -125.46536
@@ -1362,10 +1482,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (9)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1001 &1986474503
@@ -1375,6 +1501,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (13)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.753632
@@ -1407,10 +1537,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (13)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!1001 &1989097083
@@ -1420,6 +1556,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (12)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -48.27234
@@ -1452,10 +1592,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (12)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &2013485764 stripped
@@ -1471,6 +1617,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054607144}
     m_Modifications:
+    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
+      propertyPath: m_Name
+      value: Obstacle (10)
+      objectReference: {fileID: 0}
     - target: {fileID: 4008079357774976, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
       propertyPath: m_LocalPosition.x
       value: -99.12416
@@ -1503,10 +1653,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 1118941244231894, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
-      propertyPath: m_Name
-      value: Obstacle (10)
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: collision_obj_id
+      value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114360985897890674, guid: 14ff7baa2ac23214181835d8ccccd548,
+        type: 3}
+      propertyPath: eventhandler
+      value: 
+      objectReference: {fileID: 1576500411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14ff7baa2ac23214181835d8ccccd548, type: 3}
 --- !u!4 &2121106592 stripped

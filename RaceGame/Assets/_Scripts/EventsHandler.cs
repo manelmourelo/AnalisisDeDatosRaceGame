@@ -7,6 +7,9 @@ using System;
 
 public class EventsHandler : MonoBehaviour
 {
+
+    public GameObject goal = null;
+
     private List<string[]> level_events_data = new List<string[]>();
 
     private List<string[]> laps_data = new List<string[]>();
@@ -109,7 +112,7 @@ public class EventsHandler : MonoBehaviour
             row_data_temp[3] = "time";
             row_data_temp[4] = "session_id";
             row_data_temp[5] = "collision_obj_id";
-            sessions_data.Add(row_data_temp);
+            crashes_data.Add(row_data_temp);
             Save(TypeEvent.CRASH);
         }
 
@@ -157,6 +160,21 @@ public class EventsHandler : MonoBehaviour
         Save(TypeEvent.END_SESSION);
     }
 
+    public void WriteCrash(int collision_obj_id, Vector3 pos)
+    {
+        PlayerPrefs.SetString("crash_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+
+        string[] row_data_temp = new string[6];
+        row_data_temp[0] = "0";
+        row_data_temp[1] = username;
+        row_data_temp[2] = goal.GetComponent<Goal>().lap_count.ToString();
+        row_data_temp[3] = PlayerPrefs.GetString("crash_time");
+        row_data_temp[4] = "0";
+        row_data_temp[5] = collision_obj_id.ToString();
+        crashes_data.Add(row_data_temp);
+        Save(TypeEvent.CRASH);
+    }
+
     void Save(TypeEvent type)
     {
 
@@ -189,6 +207,17 @@ public class EventsHandler : MonoBehaviour
 
                 for (int index = 0; index < length; index++)
                     sb.Append(string.Join(delimiter, sessions_data[index]));
+
+                break;
+
+            case TypeEvent.CRASH:
+
+                path = "Assets/CSV/crashes.csv";
+
+                length = crashes_data.Count;
+
+                for (int index = 0; index < length; index++)
+                    sb.Append(string.Join(delimiter, crashes_data[index]));
 
                 break;
 
