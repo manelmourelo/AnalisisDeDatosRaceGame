@@ -110,7 +110,7 @@ public class EventsHandler : MonoBehaviour
             row_data_temp[4] = "session_id";
             row_data_temp[5] = "collision_obj_id";
             sessions_data.Add(row_data_temp);
-            Save(TypeEvent.END_SESSION);
+            Save(TypeEvent.CRASH);
         }
 
        // level_events_data.ToString().Replace("\n\n", "\n");
