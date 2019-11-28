@@ -10,13 +10,15 @@ public class EventsHandler : MonoBehaviour
     private List<string[]> level_events_data = new List<string[]>();
 
     private List<string[]> laps_data = new List<string[]>();
+    private List<string[]> sessions_data = new List<string[]>();
 
     public string username = "manelmm3";
 
     enum TypeEvent
     {
         EVENT_NONE,
-        LAP_DONE
+        LAP_DONE,
+        END_SESSION
     }
 
     // Start is called before the first frame update
@@ -38,6 +40,8 @@ public class EventsHandler : MonoBehaviour
 
         //string[] file = System.IO.File.ReadAllLines("Assets/CSV/level_events.csv"); 
 
+        PlayerPrefs.SetString("start_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+
         if (System.IO.File.Exists("Assets/CSV/laps.csv") == false)
         {
             string[] row_data_temp = new string[4];
@@ -48,6 +52,18 @@ public class EventsHandler : MonoBehaviour
             row_data_temp[3] = "time";
             laps_data.Add(row_data_temp);
             Save(TypeEvent.LAP_DONE);
+        }
+
+        if (System.IO.File.Exists("Assets/CSV/sessions.csv") == false)
+        {
+            string[] row_data_temp = new string[4];
+
+            row_data_temp[0] = "session_id";
+            row_data_temp[1] = "username";
+            row_data_temp[2] = "session_start";
+            row_data_temp[3] = "session_end";
+            sessions_data.Add(row_data_temp);
+            Save(TypeEvent.END_SESSION);
         }
 
         else
@@ -65,6 +81,11 @@ public class EventsHandler : MonoBehaviour
        
     }
 
+    private void OnDestroy()
+    {
+        WriteSessionEnd();
+    }
+
     public void WriteGoal(float time, int lap)
     {
 
@@ -80,10 +101,25 @@ public class EventsHandler : MonoBehaviour
 
     }
 
+    public void WriteSessionEnd()
+    {
+        PlayerPrefs.SetString("end_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+
+        string[] row_data_temp = new string[4];
+        row_data_temp[0] = "0";
+        row_data_temp[1] = username;
+        row_data_temp[2] = PlayerPrefs.GetString("start_time");
+        row_data_temp[3] = PlayerPrefs.GetString("end_time");
+        sessions_data.Add(row_data_temp);
+        Save(TypeEvent.END_SESSION);
+    }
+
     void Save(TypeEvent type)
     {
 
         string path = "";
+        int length = 0;
+        string delimiter = ";";
         StringBuilder sb = new StringBuilder();
 
         switch (type)
@@ -95,20 +131,24 @@ public class EventsHandler : MonoBehaviour
 
                 path = "Assets/CSV/laps.csv";
 
-                int length = laps_data.Count;
-                string delimiter = ";";
-
-
-
+                length = laps_data.Count;
 
                 for (int index = 0; index < length; index++) 
                     sb.Append(string.Join(delimiter, laps_data[index]));
-                    
-                   
-        
-
 
                 break;
+
+            case TypeEvent.END_SESSION:
+
+                path = "Assets/CSV/sessions.csv";
+
+                length = sessions_data.Count;
+
+                for (int index = 0; index < length; index++)
+                    sb.Append(string.Join(delimiter, sessions_data[index]));
+
+                break;
+
         }
      
 
@@ -117,5 +157,6 @@ public class EventsHandler : MonoBehaviour
         outStream.WriteLine(sb);
         outStream.Close();
         laps_data.Clear();
+        sessions_data.Clear();
     }
 }
