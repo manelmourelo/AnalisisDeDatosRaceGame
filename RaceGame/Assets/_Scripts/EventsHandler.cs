@@ -29,7 +29,7 @@ public class EventsHandler : MonoBehaviour
 
         
 
-        string[] row_data_temp = new string[3];
+        //string[] row_data_temp = new string[3];
 
 
         //string[] file = System.IO.File.ReadAllLines("Assets/CSV/level_events.csv"); 
