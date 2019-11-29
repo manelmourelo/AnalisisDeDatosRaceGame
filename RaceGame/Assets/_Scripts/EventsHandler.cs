@@ -15,6 +15,7 @@ public class EventsHandler : MonoBehaviour
     private List<string[]> laps_data = new List<string[]>();
     private List<string[]> sessions_data = new List<string[]>();
     private List<string[]> crashes_data = new List<string[]>();
+    private List<string[]> positions_data = new List<string[]>();
 
     private int last_lap_id = 0;
     private int last_session_id = 0;
@@ -27,7 +28,8 @@ public class EventsHandler : MonoBehaviour
         EVENT_NONE,
         LAP_DONE,
         END_SESSION,
-        CRASH
+        CRASH,
+        POSITION
     }
 
     // Start is called before the first frame update
@@ -152,14 +154,15 @@ public class EventsHandler : MonoBehaviour
 
         if (System.IO.File.Exists("Assets/CSV/crashes.csv") == false)
         {
-            string[] row_data_temp = new string[6];
+            string[] row_data_temp = new string[7];
 
-            row_data_temp[0] = "crash_id";
-            row_data_temp[1] = "position";
-            row_data_temp[2] = "current_lap";
-            row_data_temp[3] = "time";
-            row_data_temp[4] = "session_id";
-            row_data_temp[5] = "collision_obj_id";
+            row_data_temp[0] = "username";
+            row_data_temp[1] = "crash_id";
+            row_data_temp[2] = "position";
+            row_data_temp[3] = "current_lap";
+            row_data_temp[4] = "time";
+            row_data_temp[5] = "session_id";
+            row_data_temp[6] = "collision_obj_id";
             crashes_data.Add(row_data_temp);
             Save(TypeEvent.CRASH);
         }
@@ -191,7 +194,7 @@ public class EventsHandler : MonoBehaviour
                 {
                     temp[j] = temp[j].Trim();
 
-                    if (j == 0)
+                    if (j == 1)
                         crash_ids.Add(int.Parse(temp[j]));
 
 
@@ -205,6 +208,21 @@ public class EventsHandler : MonoBehaviour
             //Get highest session id 
             crash_ids.Sort();
             last_crash_id = crash_ids[crash_ids.Count - 1];
+        }
+
+        if (System.IO.File.Exists("Assets/CSV/positions.csv") == false)
+        {
+            string[] row_data_temp = new string[7];
+
+            row_data_temp[0] = "session_id";
+            row_data_temp[1] = "username";
+            row_data_temp[2] = "time";
+            row_data_temp[3] = "position";
+            row_data_temp[4] = "velocity";
+            row_data_temp[5] = "rotation";
+            row_data_temp[6] = "current_lap";
+            positions_data.Add(row_data_temp);
+            Save(TypeEvent.POSITION);
         }
 
         // level_events_data.ToString().Replace("\n\n", "\n");
@@ -256,16 +274,33 @@ public class EventsHandler : MonoBehaviour
     {
         PlayerPrefs.SetString("crash_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
-        string[] row_data_temp = new string[6];
-        row_data_temp[0] = (last_crash_id + 1).ToString();
-        row_data_temp[1] = pos.ToString();
-        row_data_temp[2] = goal.GetComponent<Goal>().lap_count.ToString();
-        row_data_temp[3] = PlayerPrefs.GetString("crash_time");
-        row_data_temp[4] = (last_session_id + 1).ToString();
-        row_data_temp[5] = collision_obj_id.ToString();
+        string[] row_data_temp = new string[7];
+        row_data_temp[0] = username;
+        row_data_temp[1] = (last_crash_id + 1).ToString();
+        row_data_temp[2] = pos.ToString().TrimStart('(').TrimEnd(')');
+        row_data_temp[3] = goal.GetComponent<Goal>().lap_count.ToString();
+        row_data_temp[4] = PlayerPrefs.GetString("crash_time");
+        row_data_temp[5] = (last_session_id + 1).ToString();
+        row_data_temp[6] = collision_obj_id.ToString();
         crashes_data.Add(row_data_temp);
         Save(TypeEvent.CRASH);
         last_crash_id++;
+    }
+
+    public void WritePositions(Vector3 pos, Vector3 velocity, Quaternion rotation)
+    {
+        PlayerPrefs.SetString("current_pos_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+
+        string[] row_data_temp = new string[7];
+        row_data_temp[0] = (last_session_id + 1).ToString();
+        row_data_temp[1] = username;
+        row_data_temp[2] = PlayerPrefs.GetString("current_pos_time");
+        row_data_temp[3] = pos.ToString().TrimStart('(').TrimEnd(')');
+        row_data_temp[4] = velocity.ToString().TrimStart('(').TrimEnd(')');
+        row_data_temp[5] = rotation.ToString().TrimStart('(').TrimEnd(')');
+        row_data_temp[6] = goal.GetComponent<Goal>().lap_count.ToString();
+        positions_data.Add(row_data_temp);
+        Save(TypeEvent.POSITION);
     }
 
     void Save(TypeEvent type)
@@ -314,6 +349,16 @@ public class EventsHandler : MonoBehaviour
 
                 break;
 
+            case TypeEvent.POSITION:
+
+                path = "Assets/CSV/positions.csv";
+
+                length = positions_data.Count;
+
+                for (int index = 0; index < length; index++)
+                    sb.Append(string.Join(delimiter, positions_data[index]));
+
+                break;
         }
      
 
@@ -324,5 +369,6 @@ public class EventsHandler : MonoBehaviour
         laps_data.Clear();
         sessions_data.Clear();
         crashes_data.Clear();
+        positions_data.Clear();
     }
 }
