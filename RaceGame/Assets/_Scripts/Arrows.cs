@@ -96,16 +96,18 @@ public class Arrows : MonoBehaviour
 
                     }
 
-                    if (current_lap != prev_lap)
-                    {
-                        mycolor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-                        prev_lap = current_lap;
-                    }
-                    position.y += 1.5f;
-                    GameObject tmp_arrow = Instantiate(arrow, position, rotation);
-                    tmp_arrow.GetComponentInChildren<Renderer>().material.color = mycolor;
+                    
 
                 }
+
+                if (current_lap != prev_lap)
+                {
+                    mycolor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                    prev_lap = current_lap;
+                }
+                position.y += 5.0f;
+                GameObject tmp_arrow = Instantiate(arrow, position, rotation);
+                tmp_arrow.GetComponentInChildren<Renderer>().material.color = mycolor;
 
                 parsedList.Add(temp);
 
