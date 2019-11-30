@@ -1,0 +1,1021 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20194.19.1010.1202                               -->
+<workbook original-version='18.1' source-build='2019.4.0 (20194.19.1010.1202)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='positions.csv+ (Varias conexiones)' inline='true' name='federated.00dfi9v0siwbiw18cyeth0v4qurd' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='crashes' name='textscan.0znfjo5118x1kf1dauobe0njpe0b'>
+            <connection class='textscan' directory='C:/Users/Usuario/Documents/GitHub/AnalisisDeDatosRaceGame/RaceGame/Assets/CSV' filename='crashes.csv' password='' port='0' server='' />
+          </named-connection>
+          <named-connection caption='sessions' name='textscan.0gnik8n12kslwd0zzj49i0zc6rlp'>
+            <connection class='textscan' directory='C:/Users/Usuario/Documents/GitHub/AnalisisDeDatosRaceGame/RaceGame/Assets/CSV' filename='sessions.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='positions' name='textscan.1b6xo6m0gyrmet13fbrjr0w8nuxt'>
+            <connection class='textscan' directory='C:/Users/Usuario/Documents/GitHub/AnalisisDeDatosRaceGame/RaceGame/Assets/CSV' filename='positions.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='sessions (2)' name='textscan.0e1i3vk1hm7px21ef9wzs1n5oa2e'>
+            <connection class='textscan' directory='C:/Users/Usuario/Documents/GitHub/AnalisisDeDatosRaceGame/RaceGame/Assets/CSV' filename='sessions.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[positions.csv].[username]' />
+              <expression op='[sessions.csv].[username]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1b6xo6m0gyrmet13fbrjr0w8nuxt' name='positions.csv' table='[positions#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_US' separator=';'>
+              <column datatype='integer' name='session_id' ordinal='0' />
+              <column datatype='string' name='username' ordinal='1' />
+              <column datatype='datetime' name='time' ordinal='2' />
+              <column datatype='string' name='position' ordinal='3' />
+              <column datatype='string' name='velocity' ordinal='4' />
+              <column datatype='string' name='rotation' ordinal='5' />
+              <column datatype='integer' name='current_lap' ordinal='6' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0e1i3vk1hm7px21ef9wzs1n5oa2e' name='sessions.csv' table='[sessions#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_US' separator=';'>
+              <column datatype='integer' name='session_id' ordinal='0' />
+              <column datatype='string' name='username' ordinal='1' />
+              <column datatype='datetime' name='session_start' ordinal='2' />
+              <column datatype='datetime' name='session_end' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[current_lap]' value='[positions.csv].[current_lap]' />
+          <map key='[position]' value='[positions.csv].[position]' />
+          <map key='[rotation]' value='[positions.csv].[rotation]' />
+          <map key='[session_end]' value='[sessions.csv].[session_end]' />
+          <map key='[session_id (sessions.csv)]' value='[sessions.csv].[session_id]' />
+          <map key='[session_id]' value='[positions.csv].[session_id]' />
+          <map key='[session_start]' value='[sessions.csv].[session_start]' />
+          <map key='[time]' value='[positions.csv].[time]' />
+          <map key='[username (sessions.csv)]' value='[sessions.csv].[username]' />
+          <map key='[username]' value='[positions.csv].[username]' />
+          <map key='[velocity]' value='[positions.csv].[velocity]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>session_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[session_id]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>session_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>username</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[username]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>username</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>time</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[time]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>time</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>position</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[position]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>position</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>velocity</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[velocity]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>velocity</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rotation</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rotation]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>rotation</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_lap</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[current_lap]</local-name>
+            <parent-name>[positions.csv]</parent-name>
+            <remote-alias>current_lap</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[sessions.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>session_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[session_id (sessions.csv)]</local-name>
+            <parent-name>[sessions.csv]</parent-name>
+            <remote-alias>session_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>username</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[username (sessions.csv)]</local-name>
+            <parent-name>[sessions.csv]</parent-name>
+            <remote-alias>username</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>session_start</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[session_start]</local-name>
+            <parent-name>[sessions.csv]</parent-name>
+            <remote-alias>session_start</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>session_end</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[session_end]</local-name>
+            <parent-name>[sessions.csv]</parent-name>
+            <remote-alias>session_end</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='TIME SINCE START' datatype='integer' name='[Calculation_770960021996060672]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='IF (DATEDIFF(&apos;second&apos;,[session_start],[time]) = 0) then 1  ELSEIF DATEDIFF(&apos;second&apos;,[session_start],[time]) &lt; 0 then ABS(DATEDIFF(&apos;second&apos;,[session_start],[time]))ELSE DATEDIFF(&apos;second&apos;,[session_start],[time])END' />
+      </column>
+      <column caption='CountPosition' datatype='integer' name='[Calculation_770960022012805121]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='if ABS([velocity]) &lt;= 5 then SUM(1) ELSE 0 END' />
+      </column>
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Current Lap' datatype='integer' name='[current_lap]' role='measure' type='quantitative' />
+      <column caption='Position' datatype='string' name='[position]' role='dimension' type='nominal' />
+      <column caption='Rotation' datatype='string' name='[rotation]' role='dimension' type='nominal' />
+      <column caption='Session End' datatype='datetime' name='[session_end]' role='dimension' type='ordinal' />
+      <column caption='Session Id (Sessions.Csv)' datatype='integer' name='[session_id (sessions.csv)]' role='dimension' type='ordinal' />
+      <column caption='Session Id' datatype='integer' name='[session_id]' role='dimension' type='ordinal' />
+      <column caption='Session Start' datatype='datetime' name='[session_start]' role='dimension' type='ordinal' />
+      <column caption='Time' datatype='datetime' name='[time]' role='dimension' type='ordinal' />
+      <column caption='Username (Sessions.Csv)' datatype='string' name='[username (sessions.csv)]' role='dimension' type='nominal' />
+      <column caption='Username' datatype='string' name='[username]' role='dimension' type='nominal' />
+      <column caption='Velocity' datatype='string' name='[velocity]' role='dimension' type='nominal' />
+      <column-instance column='[current_lap]' derivation='Sum' name='[sum:current_lap:ok]' pivot='key' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.632242' measure-ordering='alphabetic' measure-percentage='0.367758' rowDisplayCount='111' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[sum:current_lap:ok]' type='palette'>
+            <map to='#499894'>
+              <bucket>8</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>28</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>56</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>60</bucket>
+            </map>
+            <map to='#499894'>
+              <bucket>98</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>0</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>20</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>40</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>92</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>4</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>24</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>44</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>48</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>12</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>32</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>64</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>126</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>132</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>9</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>29</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>58</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>78</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>100</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>5</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>25</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>45</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>50</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>18</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>38</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>76</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>1</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>21</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>41</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>82</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>16</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>36</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>72</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>336</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>6</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>26</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>46</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>52</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>13</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>33</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>66</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>156</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>168</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>14</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>34</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>68</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>17</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>37</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>74</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>3780</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>19</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>39</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>90</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>10</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>30</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>80</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>88</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>104</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>7</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>27</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>47</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>54</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>2</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>22</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>42</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>94</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>15</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>35</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>70</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>280</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>11</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>31</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>62</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>84</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>112</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>3</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>23</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>43</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>86</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Hoja 2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Heat Map&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='positions.csv+ (Varias conexiones)' name='federated.00dfi9v0siwbiw18cyeth0v4qurd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00dfi9v0siwbiw18cyeth0v4qurd'>
+            <column caption='TIME SINCE START' datatype='integer' name='[Calculation_770960021996060672]' role='dimension' type='ordinal'>
+              <calculation class='tableau' formula='IF (DATEDIFF(&apos;second&apos;,[session_start],[time]) = 0) then 1  ELSEIF DATEDIFF(&apos;second&apos;,[session_start],[time]) &lt; 0 then ABS(DATEDIFF(&apos;second&apos;,[session_start],[time]))ELSE DATEDIFF(&apos;second&apos;,[session_start],[time])END' />
+            </column>
+            <column-instance column='[position]' derivation='Count' name='[cnt:position:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_770960021996060672]' derivation='None' name='[none:Calculation_770960021996060672:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[position]' derivation='None' name='[none:position:nk]' pivot='key' type='nominal' />
+            <column-instance column='[session_id]' derivation='None' name='[none:session_id:ok]' pivot='key' type='ordinal' />
+            <column caption='Position' datatype='string' name='[position]' role='dimension' type='nominal' />
+            <column caption='Session Id' datatype='integer' name='[session_id]' role='dimension' type='ordinal' />
+            <column caption='Session Start' datatype='datetime' name='[session_start]' role='dimension' type='ordinal' />
+            <column caption='Time' datatype='datetime' name='[time]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' palette='red_gold_10_0' type='interpolated' />
+            <encoding attr='size-bar' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' />
+              <text column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='209' />
+                <format attr='maxwidth' value='209' />
+                <format attr='minheight' value='40' />
+                <format attr='maxheight' value='40' />
+                <format attr='aspect' value='0' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:session_id:ok]</rows>
+        <cols>([federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:Calculation_770960021996060672:ok] / [federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk])</cols>
+      </table>
+      <simple-id uuid='{4055D1A9-DE25-4AA1-9342-94F4D6B51B59}' />
+    </worksheet>
+    <worksheet name='Hoja 3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>HeatMap&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='positions.csv+ (Varias conexiones)' name='federated.00dfi9v0siwbiw18cyeth0v4qurd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00dfi9v0siwbiw18cyeth0v4qurd'>
+            <column-instance column='[position]' derivation='Count' name='[cnt:position:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[position]' derivation='None' name='[none:position:nk]' pivot='key' type='nominal' />
+            <column-instance column='[session_id]' derivation='None' name='[none:session_id:ok]' pivot='key' type='ordinal' />
+            <column caption='Position' datatype='string' name='[position]' role='dimension' type='nominal' />
+            <column caption='Session Id' datatype='integer' name='[session_id]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' num-steps='5' palette='red_gold_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='on' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' />
+              <text column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:session_id:ok]' />
+              <text column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{0AFB4703-8F05-463A-9EAD-108E785691FE}' />
+    </worksheet>
+    <worksheet name='Hoja 4'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='positions.csv+ (Varias conexiones)' name='federated.00dfi9v0siwbiw18cyeth0v4qurd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.00dfi9v0siwbiw18cyeth0v4qurd'>
+            <column-instance column='[position]' derivation='Count' name='[cnt:position:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[position]' derivation='None' name='[none:position:nk]' pivot='key' type='nominal' />
+            <column-instance column='[session_id]' derivation='None' name='[none:session_id:ok]' pivot='key' type='ordinal' />
+            <column caption='Position' datatype='string' name='[position]' role='dimension' type='nominal' />
+            <column caption='Session Id' datatype='integer' name='[session_id]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]' value='199' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' num-steps='5' palette='red_gold_10_0' type='interpolated' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' />
+              <text column='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:session_id:ok]</rows>
+        <cols>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]</cols>
+      </table>
+      <simple-id uuid='{1FA00CD5-FEB4-4157-8F49-AFCE7923F2C2}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='Hoja 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card pane-specification-id='0' param='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[attr:velocity:nk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:Calculation_770960021996060672:ok]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:session_id:ok]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:velocity:nk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[sum:session_id:qk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[tsc:Calculation_770960021996060672:qk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[yr:Calculation_770960021996060672:ok]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[yr:time:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{8EBDD67F-BAC2-4721-8D58-34DA000AC49D}' />
+    </window>
+    <window class='worksheet' name='Hoja 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card pane-specification-id='0' param='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{59AF1446-02DF-467F-99F4-E3900438DCCD}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Hoja 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='175'>
+            <card pane-specification-id='0' param='[federated.00dfi9v0siwbiw18cyeth0v4qurd].[cnt:position:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:position:nk]</field>
+            <field>[federated.00dfi9v0siwbiw18cyeth0v4qurd].[none:session_id:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{23D64B3B-0D76-4F19-AD73-820A14F4BE86}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='124' name='Hoja 2' width='192'>
+      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
+      tclSCKG1/wG0dSrTVIOIAwAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='192' name='Hoja 3' width='192'>
+      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
+      RTKoZFDZAWQHCMkOIBlUMqhkUEEIETICVZ2MQKEfgSSDSgaVDCoZVDKoZFAPyaBIBpUMKjuA
+      7AAh2QEkg0oGlQwqCCFCRqCqkxEo9COQZFDJoJJBJYNKBpUM6iEZFMmgkkFlB5AdICQ7gGRQ
+      yaCSQQUhRMgIVHUyAoVxBAq8AW6Va9euMTU1RU9Pzw/60FtGa82RI0fYuHEjkUhkWc4/efIk
+      ra2tpNPp1/18gHw+z4kTJ9i8eTNKqWV5jsuXL1MoFOjq6lqW8yuVCoODg2zevBnLsl79Af/P
+      zgeYn59nfHycO++8c9H34TWNQEopJiYmXpcXdzMcxyEej3P+/Plle454PM65c+eW7fxisUgu
+      l6NcLi/bc5imyaVLl5bt/FKphG3bXL16dVnOLxaLWJbF1NTUspwP3r00OzuL67qL3Gt6Axw6
+      dOj//KJejUKhwL59+0gmk8tyvtaaXbt2kUqlluV8gNOnTzM5OYlhLN+qtX//fmzbXrbz5+bm
+      GBgYIB6PL8v5MzMzHD16lFgstiznA4yMjJDNZpd0r2kEEoQ3ClKBhFBjPvHEE0+At9g+/fTT
+      RKNRXnzxRQYHBymVSjQ1NbF3717WrVuH1pqnn36aXC5HsVhk9+7d3H777USjUfbv38+JEycY
+      GRlhbm6OsbExurq62LlzJydPnmT9+vVordm6dSuxWIyvf/3rKKU4dOgQfX19PPvssyilaG1t
+      ZWBggBdeeIG+vj6ee+45Ll++TGdnJxcvXuQ73/kO6XSaHTt2MDs7y/DwMB0dHXz729+ms7OT
+      48ePMzY2xvDwMBcvXuTw4cO0t7dz/vx5+vv7ufvuu7lw4QI7duygra2No0ePMjg4SG9vL7lc
+      ju9+97vk83n27dtXna/b29s5ePAgly5dIpPJ8LWvfY01a9awbds2Lly4wKVLl0in03zrW9/C
+      tm0ymQw7d+7k5Zdfpq2tja1bt2LbNul0mqGhIQ4ePMjExARnzpzh2LFj9PT0MDIywtjYGB0d
+      HVy6dIkdO3ZQKpUYHR1leHiY3t5eZmZmOHjwIF1dXRQKBbZu3YrrukxNTbF37146OzsxTZM9
+      e/YwPj7O8PAwx48fZ3BwkJ6eHkZHR5mbm6OlpYVvfvObpNNpvvGNb5DJZDhz5gwrV67k8OHD
+      nD17lo6ODg4ePMjAwADr16+nv7+f6elpVq9ezblz5+jv70drzYEDBxgaGmJ+fh6lFFu3biWT
+      yTA0NMTExAR79+4lFosxNDREV1cXu3bt4tixY/T29nLgwAGOHDlCd3c3zzzzDHNzc6xatYqz
+      Z8+yfft2XNfl0KFDnDhxglQqxdTUFNu2baO9vR2lFE899RSZTIbdu3dz/fp1Tp06RSKRoL+/
+      n2QySTKZpL+/n6tXrxKLxdi+fXv1/x8+fJgjR47UfhE2MDBANptlZGSEXC5HT08PpVKJRCLB
+      bbfdBnhz86pVq3Ach1wux4YNG8jn86RSqeqMmEgkSCaT1eu+vj727NkDePPelStXeP7553Ec
+      h5mZGVauXInWmlQqVX2jVCoVVq1aheu6tLa2VpeXWCxGKpViYGCA69ev09bWxqZNm3Bdl1gs
+      xvj4OKOjoxQKBcrlMtFolHvuuYd8Ps+qVau4//77Aa/ObNiwgVwuh2ma1QqklCKTyeA4Dvfd
+      dx8dHR2cOXOGUqlULUZHjx7FcRz2799PNptl7dq1aK1xXZeGhgYqlUr183FdF8dx6O7uplAo
+      VD+HRCJBY2MjlUqFTCYDwPT0NOfPnyebzTI4OMjMzAyjo6PEYjHWr18PQHNzM21tbYC32HV1
+      dVEsFjFNk+7ubkqlErFYjGQySalUYvXq1YC3iziOw5o1a5icnOTChQvMzs6yd+9eSqUSLS0t
+      1WV9bGyMRCIBgGEYZDIZXNelvb098H1IJpNEIhEaGhoAcF23+jXIZrOcPn2aSqVCPp/HcZzq
+      664vPaZp0tbWhuu6rFy58qbnX7lyhdHRUbq6uojFYjiOw5EjRygWi7z00kvMz89jWRb33nsv
+      MzMz1b/MtNak02m01hSLRXp7e8nn8wA0NDTQ2NjI/wKQ19lPs7C1XQAAAABJRU5ErkJggg==
+    </thumbnail>
+    <thumbnail height='84' name='Hoja 4' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
