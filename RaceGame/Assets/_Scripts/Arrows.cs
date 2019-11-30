@@ -14,6 +14,16 @@ public class Arrows : MonoBehaviour
     int current_lap = 0;
     int prev_lap = 0;
     Color mycolor;
+
+    float posx = 0.0f;
+    float posy = 0.0f;
+    float posz = 0.0f;
+
+    float rotx = 0.0f;
+    float roty = 0.0f;
+    float rotz = 0.0f;
+    float rotw = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +45,7 @@ public class Arrows : MonoBehaviour
 
             List<string> stringList = new List<string>();
             List<string[]> parsedList = new List<string[]>();
-            // List<Vector3> pos_list = new List<Vector3>();
+             List<Vector3> pos_list = new List<Vector3>();
 
             StreamReader str_reader = new StreamReader("Assets/CSV/positions.csv");
             while (!str_reader.EndOfStream)
@@ -56,38 +66,77 @@ public class Arrows : MonoBehaviour
 
                     if (j == 3)
                     {
-                        string[] aux = temp[j].Split(',');
+                        posx = float.Parse(temp[j]);
+                        //string[] aux = temp[j].Split(',');
 
 
+                        //Vector3 pos = new Vector3
+                        //(
+                        //    (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat)
+                        //);
+
+                        //position = pos;
+
+                    }
+                    if (j == 4)
+                    {
+                        posy = float.Parse(temp[j]);
+                    }
+                    if (j == 5)
+                    {
+                        posz = float.Parse(temp[j]);
                         Vector3 pos = new Vector3
                         (
-                            (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat)
+                            posx,
+                            posy,
+                            posz
                         );
 
                         position = pos;
-
                     }
 
-                    if (j == 5)
+                    if (j == 9)
                     {
-                        string[] aux = temp[j].Split(',');
+                        rotx = float.Parse(temp[j]);
+                        //string[] aux = temp[j].Split(',');
 
 
+                        //Quaternion rot = new Quaternion
+                        //(
+                        //    (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[3], CultureInfo.InvariantCulture.NumberFormat)
+                        //);
+
+                        //rotation = rot;
+
+                    }
+                    if (j == 10)
+                    {
+                        roty = float.Parse(temp[j]);
+                    }
+                    if (j == 11)
+                    {
+                        rotz = float.Parse(temp[j]);
+                    }
+                    if (j == 12)
+                    {
+                        rotw = float.Parse(temp[j]);
                         Quaternion rot = new Quaternion
                         (
-                            (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[3], CultureInfo.InvariantCulture.NumberFormat)
+                            rotx,
+                            roty,
+                            rotz,
+                            rotw
                         );
 
                         rotation = rot;
-
                     }
 
-                    if (j == 6)
+                    if (j == 13)
                     {
 
                         int lap = int.Parse(temp[j]);

@@ -161,15 +161,17 @@ public class EventsHandler : MonoBehaviour
 
         if (System.IO.File.Exists("Assets/CSV/crashes.csv") == false)
         {
-            string[] row_data_temp = new string[7];
+            string[] row_data_temp = new string[9];
 
             row_data_temp[0] = "username";
             row_data_temp[1] = "crash_id";
-            row_data_temp[2] = "position";
-            row_data_temp[3] = "current_lap";
-            row_data_temp[4] = "time";
-            row_data_temp[5] = "session_id";
-            row_data_temp[6] = "collision_obj_id";
+            row_data_temp[2] = "positionx";
+            row_data_temp[3] = "positiony";
+            row_data_temp[4] = "positionz";
+            row_data_temp[5] = "current_lap";
+            row_data_temp[6] = "time";
+            row_data_temp[7] = "session_id";
+            row_data_temp[8] = "collision_obj_id";
             crashes_data.Add(row_data_temp);
             Save(TypeEvent.CRASH);
         }
@@ -219,15 +221,22 @@ public class EventsHandler : MonoBehaviour
 
         if (System.IO.File.Exists("Assets/CSV/positions.csv") == false)
         {
-            string[] row_data_temp = new string[7];
+            string[] row_data_temp = new string[14];
 
             row_data_temp[0] = "session_id";
             row_data_temp[1] = "username";
             row_data_temp[2] = "time";
-            row_data_temp[3] = "position";
-            row_data_temp[4] = "velocity";
-            row_data_temp[5] = "rotation";
-            row_data_temp[6] = "current_lap";
+            row_data_temp[3] = "positionx";
+            row_data_temp[4] = "positiony";
+            row_data_temp[5] = "positionz";
+            row_data_temp[6] = "velocityx";
+            row_data_temp[7] = "velocityy";
+            row_data_temp[8] = "velocityz";
+            row_data_temp[9] = "rotationx";
+            row_data_temp[10] = "rotationy";
+            row_data_temp[11] = "rotationz";
+            row_data_temp[12] = "rotationw";
+            row_data_temp[13] = "current_lap";
             positions_data.Add(row_data_temp);
             Save(TypeEvent.POSITION);
         }
@@ -281,14 +290,16 @@ public class EventsHandler : MonoBehaviour
     {
         PlayerPrefs.SetString("crash_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
-        string[] row_data_temp = new string[7];
+        string[] row_data_temp = new string[9];
         row_data_temp[0] = username;
         row_data_temp[1] = (last_crash_id + 1).ToString();
-        row_data_temp[2] = pos.ToString().TrimStart('(').TrimEnd(')');
-        row_data_temp[3] = goal.GetComponent<Goal>().lap_count.ToString();
-        row_data_temp[4] = PlayerPrefs.GetString("crash_time");
-        row_data_temp[5] = (last_session_id + 1).ToString();
-        row_data_temp[6] = collision_obj_id.ToString();
+        row_data_temp[2] = pos.x.ToString()/*.TrimStart('(').TrimEnd(')')*/;
+        row_data_temp[3] = pos.y.ToString();
+        row_data_temp[4] = pos.z.ToString();
+        row_data_temp[5] = goal.GetComponent<Goal>().lap_count.ToString();
+        row_data_temp[6] = PlayerPrefs.GetString("crash_time");
+        row_data_temp[7] = (last_session_id + 1).ToString();
+        row_data_temp[8] = collision_obj_id.ToString();
         crashes_data.Add(row_data_temp);
         Save(TypeEvent.CRASH);
         last_crash_id++;
@@ -298,14 +309,21 @@ public class EventsHandler : MonoBehaviour
     {
         PlayerPrefs.SetString("current_pos_time", System.DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
 
-        string[] row_data_temp = new string[7];
+        string[] row_data_temp = new string[14];
         row_data_temp[0] = (last_session_id + 1).ToString();
         row_data_temp[1] = username;
         row_data_temp[2] = PlayerPrefs.GetString("current_pos_time");
-        row_data_temp[3] = pos.ToString().TrimStart('(').TrimEnd(')');
-        row_data_temp[4] = velocity.ToString().TrimStart('(').TrimEnd(')');
-        row_data_temp[5] = rotation.ToString().TrimStart('(').TrimEnd(')');
-        row_data_temp[6] = goal.GetComponent<Goal>().lap_count.ToString();
+        row_data_temp[3] = pos.x.ToString();
+        row_data_temp[4] = pos.y.ToString();
+        row_data_temp[5] = pos.z.ToString();
+        row_data_temp[6] = velocity.x.ToString();
+        row_data_temp[7] = velocity.y.ToString();
+        row_data_temp[8] = velocity.z.ToString();
+        row_data_temp[9] = rotation.x.ToString();
+        row_data_temp[10] = rotation.y.ToString();
+        row_data_temp[11] = rotation.z.ToString();
+        row_data_temp[12] = rotation.w.ToString();
+        row_data_temp[13] = goal.GetComponent<Goal>().lap_count.ToString();
         positions_data.Add(row_data_temp);
         Save(TypeEvent.POSITION);
     }

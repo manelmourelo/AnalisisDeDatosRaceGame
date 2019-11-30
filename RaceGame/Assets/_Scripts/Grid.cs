@@ -15,7 +15,9 @@ public class Grid : MonoBehaviour
     private Dictionary<Vector2, GameObject> cubes_heatmap;
     public GameObject grid_parent;
 
-    
+    float posx = 0.0f;
+    float posy = 0.0f;
+    float posz = 0.0f;
 
     private void Start()
     {
@@ -164,25 +166,51 @@ public class Grid : MonoBehaviour
 
                     if (j == 3)
                     {
-                        string[] aux = temp[j].Split(',');
+
+                        posx = float.Parse(temp[j]);
+
+                        //string[] aux = temp[j].Split(',');
 
 
-                        Vector3 pos = new Vector3
-                        (
-                            (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
-                            (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat)
-                        );
+                        //Vector3 pos = new Vector3
+                        //(
+                        //    (float)double.Parse(aux[0], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[1], CultureInfo.InvariantCulture.NumberFormat),
+                        //    (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat)
+                        //);
 
-                     
 
-                        SetValue(pos, GetValue(pos) + 5);
 
-                        int x, y;
-                        GetXY(pos, out x, out y);
-                        UpdateHeatmap(x, y);
+                        //SetValue(pos, GetValue(pos) + 5);
+
+                        //int x, y;
+                        //GetXY(pos, out x, out y);
+                        //UpdateHeatmap(x, y);
 
                     }
+
+                    if (j == 4)
+                    {
+                        posy = float.Parse(temp[j]);
+                    }
+
+                    if (j == 5)
+                    {
+                        posz = float.Parse(temp[j]);
+                    }
+
+                    Vector3 pos = new Vector3
+                    (
+                        posx,
+                        posy,
+                        posz
+                    );
+
+                    SetValue(pos, GetValue(pos) + 5);
+
+                    int x, y;
+                    GetXY(pos, out x, out y);
+                    UpdateHeatmap(x, y);
 
                 }
 
