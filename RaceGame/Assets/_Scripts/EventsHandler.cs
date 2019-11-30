@@ -61,6 +61,7 @@ public class EventsHandler : MonoBehaviour
             List<string> stringList = new List<string>();
             List<string[]> parsedList = new List<string[]>();
             List<int> lap_ids = new List<int>();
+            int last_lap = 0;
           
             StreamReader str_reader = new StreamReader("Assets/CSV/laps.csv");
             while (!str_reader.EndOfStream)
@@ -78,9 +79,13 @@ public class EventsHandler : MonoBehaviour
                 for (int j = 0; j < temp.Length; j++)
                 {
                     temp[j] = temp[j].Trim();
-                 
+
                     if (j == 0)
+                    {
                         lap_ids.Add(int.Parse(temp[j]));
+                        if (last_lap < int.Parse(temp[j]))
+                            last_lap = int.Parse(temp[j]);
+                    }
 
                  
                 }
@@ -90,9 +95,11 @@ public class EventsHandler : MonoBehaviour
             }
 
             //Get highest lap id
-            lap_ids.Sort();
-            last_lap_id = lap_ids[lap_ids.Count - 1];
-            
+            //lap_ids.Sort();
+            last_lap_id = last_lap;
+            Debug.Log("Last lap collected is: " + last_lap_id.ToString());
+
+
 
         }
 

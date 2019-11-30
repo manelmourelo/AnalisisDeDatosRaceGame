@@ -12,36 +12,57 @@ public class Grid : MonoBehaviour
     public float cubeSize;
     private int[,] gridArray;
     private TextMesh[,] debugTextArray;
+    private Dictionary<Vector2, GameObject> cubes_heatmap;
+    public GameObject grid_parent;
 
+    
 
+    private void Start()
+    {
+
+        cubes_heatmap = new Dictionary<Vector2, GameObject>();
+        gridArray = new int[width, height];
+        debugTextArray = new TextMesh[width, height];
+        
+        SetGrid();
+        SetCSVValues();
+
+    
+
+    }
 
     public Grid(int w, int h, float size)
     {
         this.width = w;
         this.height = h;
         cubeSize = size;
+        
+    }
+    
 
-        gridArray = new int[w, h];
-        debugTextArray = new TextMesh[width, height];
+    private void SetGrid()
+    {
+        
+        
 
 
-        for (int x=0; x<gridArray.GetLength(0); x++)
+        for (int x = 0; x < gridArray.GetLength(0); x++)
         {
-            for(int y = 0; y < gridArray.GetLength(1); y++)
+            for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-
-                debugTextArray[x,y] = CreateWorldText(gridArray[x, y].ToString(), GetWorldPos(x, y) + new Vector3(cubeSize, 0, cubeSize) * 0.5f, 30, Color.white, TextAnchor.MiddleCenter);
+                
+                debugTextArray[x, y] = CreateWorldText(gridArray[x, y].ToString(), GetWorldPos(x, y) + new Vector3(cubeSize, 0, cubeSize) * 0.5f, 30, Color.white, TextAnchor.MiddleCenter);
                 Debug.DrawLine(GetWorldPos(x, y), GetWorldPos(x, y + 1), Color.white, 100f);
                 Debug.DrawLine(GetWorldPos(x, y), GetWorldPos(x + 1, y), Color.white, 100f);
 
             }
 
         }
-
-
-        
     }
-    
+
+
+
+
     private Vector3 GetWorldPos(int x, int y)
     {
         return new Vector3(x, 0, y) * cubeSize;
@@ -50,6 +71,7 @@ public class Grid : MonoBehaviour
     private TextMesh CreateWorldText(string text, Vector3 pos, int fontSize, Color color, TextAnchor textAnchor)
     {
         GameObject gameObject = new GameObject("World_Text", typeof(TextMesh));
+        gameObject.transform.SetParent(grid_parent.transform);
         Transform trans = gameObject.transform;
         //trans.SetParent(parent, false);
         trans.localPosition = pos;
@@ -152,15 +174,13 @@ public class Grid : MonoBehaviour
                             (float)double.Parse(aux[2], CultureInfo.InvariantCulture.NumberFormat)
                         );
 
-                        //Vector3 pos = new Vector3(
-                        //    System.Convert.ToSingle(ToDouble(aux[0], System.Globalization.NumberStyles.Any)),
-                        //    System.Convert.ToSingle(ToDouble(aux[1], System.Globalization.NumberStyles.Any)),
-                        //    System.Convert.ToSingle(ToDouble(aux[2], System.Globalization.NumberStyles.Any))
-                        //    );
+                     
 
-                        //pos_list.Add(pos);
+                        SetValue(pos, GetValue(pos) + 5);
 
-                        SetValue(pos, GetValue(pos) + 10);
+                        int x, y;
+                        GetXY(pos, out x, out y);
+                        UpdateHeatmap(x, y);
 
                     }
 
@@ -179,6 +199,54 @@ public class Grid : MonoBehaviour
 
 
 
+    }
+
+    private void UpdateHeatmap(int x, int y)
+    {
+
+
+        GameObject go = null;
+
+        Vector2 gridPos = new Vector2(x, y);
+
+        if (cubes_heatmap.TryGetValue(gridPos, out go))
+        {
+            //Succes
+
+            Vector3[] points = new Vector3[5];
+
+            //go = (GameObject)Instantiate(null, points, Quaternion.identity);
+
+
+
+        }
+        else
+        {
+
+            //Fail
+
+
+            go = Instantiate(Resources.Load("_Prefabs/CubeHeatMap") as GameObject, new Vector3(x * cubeSize + cubeSize/2, 1, y * cubeSize + cubeSize / 2), Quaternion.identity);
+            go.transform.SetParent(this.gameObject.transform);
+            go.transform.localScale *= cubeSize;
+            cubes_heatmap.Add(gridPos, go);
+            go.GetComponent<MeshRenderer>().material = Instantiate(Resources.Load("_Materials/HeatMapCube") as Material);
+
+            
+
+        }
+
+        if (go)
+        {
+            float val = GetValue(x, y) * 0.01f;
+
+            Color c = go.GetComponent<Grad>().gradient.Evaluate(val);
+
+            Debug.Log("Val: " + val.ToString() + "Color" + c.ToString());
+
+            go.GetComponent<MeshRenderer>().material.color = c;
+
+        }
     }
 
 
